@@ -81,13 +81,13 @@ export default function Hero() {
       </motion.div>
 
       {/* center: headline + portrait */}
-      <div className="container-x relative flex flex-1 flex-col items-start justify-center gap-6 md:flex-row md:items-center md:justify-start md:gap-0">
-        {/* mobile portrait — stacks above the name so they never overlap */}
+      <div className="container-x relative flex flex-1 flex-col items-start justify-center gap-7 md:flex-row md:items-center md:justify-start md:gap-0">
+        {/* mobile portrait — stacks above the name; sized to fill the section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
           transition={{ delay: 0.2, duration: 0.9, ease: EASE }}
-          className="pointer-events-none z-20 w-[30vw] max-w-[120px] self-end md:hidden"
+          className="pointer-events-none z-20 w-[58vw] max-w-[260px] self-center md:hidden"
         >
           <Portrait priority className="w-full" />
         </motion.div>
