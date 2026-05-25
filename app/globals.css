@@ -56,6 +56,12 @@
     color: var(--bone);
   }
 
+  /* During the theme-toggle transition the curtain covers the swap, so kill the
+     slow colour fade and let the reveal show a crisp, fully-themed page. */
+  html.theme-anim body {
+    transition: none !important;
+  }
+
   ::selection {
     background-color: var(--vermillion);
     color: var(--bone-2);

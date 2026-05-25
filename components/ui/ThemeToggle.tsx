@@ -14,12 +14,15 @@ export default function ThemeToggle({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        toggle({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+      }}
       data-cursor="theme"
       aria-label="Toggle light / dark theme"
       title="Toggle theme"
       className={cn(
-        "group relative flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-300",
+        "group relative flex h-10 w-10 items-center justify-center rounded-full border transition-[colors,transform] duration-300 active:scale-90",
         "border-ink/20 text-ink hover:border-ink",
         "dark:border-bone/25 dark:text-bone dark:hover:border-vermillion dark:hover:text-vermillion",
         className
