@@ -23,7 +23,7 @@ export default function PageHeader({
         <span>{index}</span>
       </div>
 
-      <h1 className="mt-7 font-display text-[clamp(2.8rem,8vw,7rem)] font-extrabold uppercase leading-[0.85] tracking-tight">
+      <h1 className="mt-7 font-display text-[clamp(2rem,8vw,7rem)] font-extrabold uppercase leading-[0.85] tracking-tight break-words">
         {titleLines.map((line, i) => (
           <MaskText
             key={i}

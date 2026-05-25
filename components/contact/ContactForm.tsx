@@ -83,7 +83,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-7">
+    <form onSubmit={onSubmit} noValidate className="flex min-w-0 flex-col gap-7">
       {/* honeypot — invisible to people, trips up bots */}
       <input
         type="text"

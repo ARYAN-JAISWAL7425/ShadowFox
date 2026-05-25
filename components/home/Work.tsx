@@ -34,7 +34,7 @@ export default function Work() {
     <section id="work" className="relative bg-ink py-24 text-bone md:py-36">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 rounded-full bg-vermillion" />
               <TextScramble
@@ -42,7 +42,7 @@ export default function Work() {
                 className="font-mono text-[11px] uppercase tracking-mono text-bone/50"
               />
             </div>
-            <h2 className="mt-6 font-display text-[clamp(2.4rem,7vw,6rem)] font-extrabold uppercase leading-[0.85] tracking-tight">
+            <h2 className="mt-6 font-display text-[clamp(1.9rem,7vw,6rem)] font-extrabold uppercase leading-[0.85] tracking-tight break-words">
               <MaskText lines={["Selected", "Work"]} />
             </h2>
           </div>

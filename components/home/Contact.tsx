@@ -20,8 +20,8 @@ export default function Contact() {
 
         <div className="mt-10 grid gap-16 lg:grid-cols-[1.1fr_1fr]">
           {/* left: statement */}
-          <div>
-            <h2 className="font-display text-[clamp(2.4rem,6.5vw,5.5rem)] font-extrabold uppercase leading-[0.85] tracking-tight">
+          <div className="min-w-0">
+            <h2 className="font-display text-[clamp(1.5rem,6.5vw,5.5rem)] font-extrabold uppercase leading-[0.85] tracking-tight break-words">
               <MaskText lines={["Let's build"]} />
               <MaskText lines={["something"]} className="text-vermillion" delay={0.08} />
               <MaskText lines={["great."]} delay={0.16} />

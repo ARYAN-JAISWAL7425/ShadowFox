@@ -17,7 +17,7 @@ export default function Portrait({
   priority?: boolean;
 }) {
   return (
-    <div className={cn("relative aspect-square", className)}>
+    <div className={cn("relative aspect-square overflow-hidden", className)}>
       {/* rotating circular text */}
       <svg
         viewBox="0 0 200 200"

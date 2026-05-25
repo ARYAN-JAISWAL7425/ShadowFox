@@ -73,7 +73,7 @@ export default function About() {
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>
               <div>
-                <div className="font-display text-5xl font-extrabold tracking-tight md:text-6xl">
+                <div className="font-display text-[clamp(1.9rem,9.5vw,3rem)] font-extrabold tracking-tight md:text-[clamp(2.25rem,5.6vw,3.75rem)]">
                   <CountUp
                     value={s.value}
                     suffix={s.suffix}

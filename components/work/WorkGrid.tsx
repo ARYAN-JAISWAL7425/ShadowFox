@@ -25,7 +25,7 @@ export default function WorkGrid() {
                     <span>{p.year}</span>
                   </div>
                   <div style={{ transform: "translateZ(40px)" }}>
-                    <h3 className="font-display text-4xl font-extrabold tracking-tight text-bone md:text-5xl">
+                    <h3 className="font-display text-[clamp(1.75rem,9vw,2.25rem)] font-extrabold tracking-tight text-bone md:text-5xl">
                       {p.title}
                     </h3>
                   </div>
@@ -35,7 +35,7 @@ export default function WorkGrid() {
                 </div>
               </TiltCard>
 
-              <div className="mt-5 flex items-start justify-between gap-6">
+              <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                 <div>
                   <p className="font-mono text-[11px] uppercase tracking-mono text-muted dark:text-bone/55">
                     {p.category}
