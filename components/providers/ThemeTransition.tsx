@@ -1,182 +1,95 @@
 "use client";
 
-import { useMemo } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useMemo, useRef } from "react";
+import type { CSSProperties } from "react";
 
 export type ThemeFx = {
   id: number;
   x: number;
   y: number;
   to: "light" | "dark";
-  /** The OUTGOING theme's base background colour — the curtain that drains away. */
-  fromColor: string;
 };
 
 /**
- * Theme-toggle transition.
+ * Theme-toggle transition — "halftone dissolve".
  *
- * On toggle we cover the screen with a disc of the *outgoing* theme colour and
- * implode it toward the toggle button, revealing the already-swapped (real)
- * page beneath — so there is no content "pop". A single vermillion lightning
- * strike (bolts + bloom + ring) fires from the button to sell the drama.
+ * A field of vermillion newsprint dots bursts from the toggle button and
+ * spreads to a dense cover; the real theme is swapped underneath (timed by the
+ * provider) and the dots then recede, revealing the new page through the gaps.
+ * Risograph/print flavour that sits with the site's grain overlay.
  *
- * Reduced-motion users never reach here — the provider does a clean swap instead.
+ * Reduced-motion users never reach here — the provider does a clean swap.
+ * Visual is purely cosmetic (CSS vars driven by rAF); the provider owns the
+ * theme swap + cleanup via timers, so a backgrounded/throttled tab can never
+ * get stuck mid-transition.
  */
-export default function ThemeTransition({
-  fx,
-  onDone,
-}: {
-  fx: ThemeFx | null;
-  onDone: () => void;
-}) {
-  return (
-    <AnimatePresence>{fx && <Burst key={fx.id} fx={fx} onDone={onDone} />}</AnimatePresence>
-  );
+export default function ThemeTransition({ fx }: { fx: ThemeFx | null }) {
+  if (!fx) return null;
+  return <Burst key={fx.id} fx={fx} />;
 }
 
-/** Jagged lightning polyline radiating from (sx,sy) along `angleDeg` for `len`px. */
-function makeBolt(
-  sx: number,
-  sy: number,
-  angleDeg: number,
-  len: number,
-  segs: number,
-  jitter: number,
-) {
-  const rad = (angleDeg * Math.PI) / 180;
-  const px = Math.cos(rad);
-  const py = Math.sin(rad);
-  const nx = Math.cos(rad + Math.PI / 2);
-  const ny = Math.sin(rad + Math.PI / 2);
-  const pts: Array<[number, number]> = [[sx, sy]];
-  for (let i = 1; i <= segs; i++) {
-    const t = i / segs;
-    // taper the zigzag toward the tip so it reads as a point of impact
-    const off = (Math.random() - 0.5) * jitter * (1 - t * 0.7);
-    pts.push([sx + px * len * t + nx * off, sy + py * len * t + ny * off]);
-  }
-  return "M" + pts.map((p) => `${p[0].toFixed(0)},${p[1].toFixed(0)}`).join(" L");
-}
+const TILE = 22; // dot grid size (px)
+const COVER = 430; // grow-to-cover (ms)
+const REVEAL = 440; // dissolve-to-reveal (ms)
+const PEAK = 72; // dot radius (% of tile) at densest — just past merge, keeps the dot texture
 
-function Burst({ fx, onDone }: { fx: ThemeFx; onDone: () => void }) {
-  const { x, y, fromColor } = fx;
+function Burst({ fx }: { fx: ThemeFx }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { x, y } = fx;
 
-  const { D, radius, bolts, vw, vh } = useMemo(() => {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    // radius that reaches the farthest corner from the toggle → full cover at scale 1
-    const radius = Math.hypot(Math.max(x, vw - x), Math.max(y, vh - y));
-    const diag = Math.hypot(vw, vh);
-    // bolts fan out across the canvas, biased away from the (top-right) button
-    const bolts = [
-      makeBolt(x, y, 132, diag * 0.95, 7, 70),
-      makeBolt(x, y, 100, diag * 0.78, 6, 60),
-      makeBolt(x, y, 168, diag * 0.62, 6, 55),
-      makeBolt(x, y, 150, diag * 0.34, 4, 34), // short branch
-    ];
-    return { D: radius * 2, radius, bolts, vw, vh };
+  const maxR = useMemo(() => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return Math.hypot(Math.max(x, w - x), Math.max(y, h - y)) * 1.06;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fx.id]);
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const eOut = (t: number) => 1 - Math.pow(1 - t, 3);
+    const eIn = (t: number) => t * t * t;
+    let raf = 0;
+    let t0 = 0;
+    const tick = (now: number) => {
+      if (!t0) t0 = now;
+      const t = now - t0;
+      let p: number;
+      let m: number;
+      if (t <= COVER) {
+        const k = eOut(t / COVER);
+        p = k * PEAK; // dots grow
+        m = k * maxR; // reveal mask spreads from the toggle
+      } else if (t <= COVER + REVEAL) {
+        const k = eIn((t - COVER) / REVEAL);
+        p = PEAK * (1 - k); // dots dissolve, revealing the new page
+        m = maxR;
+      } else {
+        el.style.setProperty("--p", "0%");
+        return;
+      }
+      el.style.setProperty("--p", `${p.toFixed(2)}%`);
+      el.style.setProperty("--m", `${m.toFixed(1)}px`);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [fx.id, maxR]);
+
+  const dotStyle = {
+    "--p": "0%",
+    "--m": "0px",
+    backgroundImage:
+      "radial-gradient(circle, #f23a1d 0%, #f23a1d var(--p), transparent calc(var(--p) + 0.5%))",
+    backgroundSize: `${TILE}px ${TILE}px`,
+    WebkitMaskImage: `radial-gradient(circle at ${x}px ${y}px, #000 var(--m), transparent calc(var(--m) + 16%))`,
+    maskImage: `radial-gradient(circle at ${x}px ${y}px, #000 var(--m), transparent calc(var(--m) + 16%))`,
+    willChange: "background-image, mask-image",
+  } as CSSProperties;
+
   return (
-    <motion.div
-      className="pointer-events-none fixed inset-0 z-[120] overflow-hidden"
-      aria-hidden
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.12 } }}
-    >
-      {/* Outgoing-theme curtain imploding toward the toggle, revealing the new page */}
-      <motion.div
-        className="absolute rounded-full"
-        style={{
-          width: D,
-          height: D,
-          left: x - radius,
-          top: y - radius,
-          backgroundColor: fromColor,
-          willChange: "transform",
-        }}
-        initial={{ scale: 1 }}
-        animate={{ scale: 0 }}
-        transition={{ duration: 0.72, ease: [0.7, 0, 0.25, 1] }}
-        onAnimationComplete={onDone}
-      />
-
-      {/* Vermillion flash bloom from the strike point — single pulse, photosensitivity-safe */}
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          background: `radial-gradient(circle at ${x}px ${y}px, rgba(242,58,29,0.5), rgba(255,138,110,0.16) 38%, rgba(242,58,29,0) 62%)`,
-          willChange: "opacity",
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.95, 0] }}
-        transition={{ duration: 0.5, ease: "easeOut", times: [0, 0.16, 1] }}
-      />
-
-      {/* Lightning bolts */}
-      <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox={`0 0 ${vw} ${vh}`}
-        fill="none"
-        style={{ filter: "drop-shadow(0 0 7px rgba(242,58,29,0.65))" }}
-      >
-        {bolts.map((d, i) => {
-          const delay = i * 0.045;
-          return (
-            <g key={i}>
-              {/* soft outer glow */}
-              <motion.path
-                d={d}
-                stroke="#f23a1d"
-                strokeWidth={6}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ opacity: 0.55 }}
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: [0, 0.55, 0.4, 0] }}
-                transition={{
-                  pathLength: { duration: 0.16, ease: "easeOut", delay },
-                  opacity: { duration: 0.5, times: [0, 0.12, 0.4, 1], delay },
-                }}
-              />
-              {/* hot core */}
-              <motion.path
-                d={d}
-                stroke="#fff1ec"
-                strokeWidth={1.75}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: [0, 1, 0.9, 0] }}
-                transition={{
-                  pathLength: { duration: 0.14, ease: "easeOut", delay },
-                  opacity: { duration: 0.45, times: [0, 0.1, 0.4, 1], delay },
-                }}
-              />
-            </g>
-          );
-        })}
-      </svg>
-
-      {/* Shock ring pulsing out from the toggle */}
-      <motion.div
-        className="absolute rounded-full border-2"
-        style={{
-          left: x,
-          top: y,
-          width: 60,
-          height: 60,
-          marginLeft: -30,
-          marginTop: -30,
-          borderColor: "#f23a1d",
-          willChange: "transform, opacity",
-        }}
-        initial={{ scale: 0.15, opacity: 0.8 }}
-        animate={{ scale: (radius * 1.5) / 30, opacity: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      />
-    </motion.div>
+    <div className="pointer-events-none fixed inset-0 z-[120] overflow-hidden" aria-hidden>
+      <div ref={ref} className="absolute inset-0" style={dotStyle} />
+    </div>
   );
 }

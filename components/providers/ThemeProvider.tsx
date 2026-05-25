@@ -21,9 +21,6 @@ type ThemeCtx = {
 
 const ThemeContext = createContext<ThemeCtx | null>(null);
 
-/** Outgoing-theme base background — the curtain colour for the transition. */
-const BG: Record<Theme, string> = { light: "#ece7dd", dark: "#14110c" };
-
 /** Inline script — runs before paint so the right theme shows with no flash. */
 export const themeNoFlashScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.style.colorScheme='light';}}catch(e){}})();`;
 
@@ -74,29 +71,32 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      // Freeze the colour transition so the curtain swap underneath is crisp.
+      // Freeze the colour transition so the swap under the dot cover is crisp.
       document.documentElement.classList.add("theme-anim");
-      setFx({ id: Date.now(), x: origin.x, y: origin.y, to: next, fromColor: BG[isDark ? "dark" : "light"] });
+      setFx({ id: Date.now(), x: origin.x, y: origin.y, to: next });
     },
     [setTheme],
   );
 
-  // With the curtain covering the screen, swap the real theme one frame later.
+  // Provider owns the timing so a throttled/backgrounded tab can't get stuck:
+  // swap the real theme at the dot peak, then tear the overlay down.
   useEffect(() => {
     if (!fx) return;
-    const raf = requestAnimationFrame(() => setTheme(fx.to));
-    return () => cancelAnimationFrame(raf);
+    const swap = window.setTimeout(() => setTheme(fx.to), 430);
+    const done = window.setTimeout(() => {
+      setFx(null);
+      document.documentElement.classList.remove("theme-anim");
+    }, 900);
+    return () => {
+      clearTimeout(swap);
+      clearTimeout(done);
+    };
   }, [fx, setTheme]);
-
-  const endFx = useCallback(() => {
-    setFx(null);
-    document.documentElement.classList.remove("theme-anim");
-  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggle, setTheme, mounted }}>
       {children}
-      <ThemeTransition fx={fx} onDone={endFx} />
+      <ThemeTransition fx={fx} />
     </ThemeContext.Provider>
   );
 }
