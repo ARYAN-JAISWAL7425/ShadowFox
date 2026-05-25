@@ -74,7 +74,7 @@ export default function Intro() {
               initial={{ y: "110%" }}
               animate={{ y: "0%" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-[14vw] font-extrabold leading-none tracking-tight md:text-[9vw]"
+              className="font-display text-[10.5vw] font-extrabold leading-none tracking-tight md:text-[9vw]"
             >
               ARYAN <span className="text-vermillion">JAISWAL</span>
             </motion.h1>
