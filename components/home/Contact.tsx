@@ -21,18 +21,18 @@ export default function Contact() {
         <div className="mt-10 grid gap-16 lg:grid-cols-[1.1fr_1fr]">
           {/* left: statement */}
           <div className="min-w-0">
-            <h2 className="font-display text-[clamp(1.5rem,6.5vw,5.5rem)] font-extrabold uppercase leading-[0.85] tracking-tight break-words">
+            <h2 className="font-display text-[clamp(1.75rem,7vw,5.5rem)] font-extrabold uppercase leading-[1] tracking-tight lg:text-[clamp(2.25rem,3.9vw,3.75rem)] xl:text-[clamp(2.75rem,4.1vw,3.75rem)]">
               <MaskText lines={["Let's build"]} />
               <MaskText lines={["something"]} className="text-vermillion" delay={0.08} />
               <MaskText lines={["great."]} delay={0.16} />
             </h2>
 
-            <p className="mt-8 max-w-md text-pretty leading-relaxed text-bone/60">
+            <p className="mt-10 max-w-md text-pretty leading-relaxed text-bone/65 md:text-lg lg:max-w-lg lg:text-xl">
               Whether it&apos;s a product to build, a team to strengthen or just an idea
               to pressure-test — my inbox is open.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+            <div className="mt-12 flex flex-wrap gap-x-10 gap-y-3">
               {socials.map((s) => (
                 <Magnetic key={s.label} strength={0.4}>
                   <a
