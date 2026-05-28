@@ -60,7 +60,14 @@ export const nav = [
   { label: "Contact", href: "/contact", index: "06" },
 ];
 
-export const stats = [
+export type StatItem = {
+  value: number;
+  suffix: string;
+  label: string;
+  decimals?: number;
+};
+
+export const stats: StatItem[] = [
   { value: 15, suffix: "+", label: "Projects built" },
   { value: 2, suffix: "+", label: "Years learning full-stack" },
   { value: 6, suffix: "+", label: "AI prototypes shipped" },
