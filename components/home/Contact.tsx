@@ -22,14 +22,14 @@ export default function Contact() {
           {/* left: statement */}
           <div className="min-w-0">
             <h2 className="font-display text-[clamp(1.75rem,7vw,5.5rem)] font-extrabold uppercase leading-[1] tracking-tight lg:text-[clamp(2.25rem,3.9vw,3.75rem)] xl:text-[clamp(2.75rem,4.1vw,3.75rem)]">
-              <MaskText lines={["Let's build"]} />
-              <MaskText lines={["something"]} className="text-vermillion" delay={0.08} />
-              <MaskText lines={["great."]} delay={0.16} />
+              <MaskText lines={["Let's"]} />
+              <MaskText lines={["connect"]} className="text-vermillion" delay={0.08} />
+              <MaskText lines={["and learn."]} delay={0.16} />
             </h2>
 
             <p className="mt-10 max-w-md text-pretty leading-relaxed text-bone/65 md:text-lg lg:max-w-lg lg:text-xl">
-              Whether it&apos;s a product to build, a team to strengthen or just an idea
-              to pressure-test — my inbox is open.
+              If you want to share feedback, talk about projects, or collaborate on
+              something interesting, my inbox is open.
             </p>
 
             <div className="mt-12 flex flex-wrap gap-x-10 gap-y-3">

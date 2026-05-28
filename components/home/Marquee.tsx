@@ -12,13 +12,13 @@ import {
 import { useRef } from "react";
 
 const ITEMS = [
-  "Full-Stack Development",
-  "SaaS Platforms",
-  "Web Applications",
-  "API Design",
-  "Startup MVPs",
-  "Performance",
-  "Interface & Motion",
+  "Full-Stack Builds",
+  "GenAI Experiments",
+  "RAG Systems",
+  "AI Agents",
+  "SaaS Thinking",
+  "Automation",
+  "Modern Web Craft",
 ];
 
 const wrap = (min: number, max: number, v: number) => {

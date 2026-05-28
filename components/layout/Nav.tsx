@@ -84,7 +84,7 @@ export default function Nav() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-vermillion opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-vermillion" />
               </span>
-              Available
+              Open to internships
             </span>
             <ThemeToggle />
             <Magnetic strength={0.45}>
@@ -93,7 +93,7 @@ export default function Nav() {
                 data-cursor="say hi"
                 className="inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-bone transition-colors hover:bg-vermillion dark:bg-bone dark:text-ink dark:hover:bg-vermillion dark:hover:text-bone"
               >
-                Let&apos;s talk
+                Say hello
               </Link>
             </Magnetic>
           </div>

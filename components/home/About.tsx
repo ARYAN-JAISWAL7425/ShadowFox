@@ -22,16 +22,16 @@ export default function About() {
         {/* big statement */}
         <h2 className="mt-10 max-w-5xl font-display text-[clamp(1.9rem,4.6vw,4.2rem)] font-bold leading-[1.05] tracking-tight">
           <SplitWords
-            text="I build complete web products — from the first sketch to the production deploy — that are fast, accessible and genuinely a pleasure to use."
-            highlight={["complete", "fast", "pleasure"]}
+            text="This site is my digital home — a living record of my story, my builds, and my path into full-stack and AI engineering."
+            highlight={["digital home", "story", "path"]}
           />
         </h2>
 
         <Reveal delay={0.1} className="mt-8 max-w-xl">
           <p className="text-pretty text-base leading-relaxed text-muted dark:text-bone/60 md:text-lg">
-            For six years I&apos;ve partnered with founders and teams as the engineer who can
-            take an idea the whole way — architecture, interface, infrastructure and the
-            details in between.
+            I&apos;m a VIT Bhopal AIML student focused on becoming a full-stack developer and
+            generative AI engineer. I share the experiments, projects, and lessons that
+            shape my growth.
           </p>
         </Reveal>
 
@@ -69,7 +69,7 @@ export default function About() {
         </div>
 
         {/* stats */}
-        <div className="mt-16 grid grid-cols-2 gap-y-10 border-t border-ink/12 pt-12 dark:border-bone/12 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-y-10 border-t border-ink/12 pt-12 dark:border-bone/12 md:grid-cols-4 max-w-5xl mx-auto">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>
               <div>

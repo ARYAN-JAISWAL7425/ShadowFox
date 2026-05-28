@@ -66,7 +66,7 @@ export default function Intro() {
         >
           <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-mono text-bone/60">
             <span>Aryan Jaiswal©</span>
-            <span>Full-Stack Developer</span>
+            <span>GenAI & Full-Stack</span>
           </div>
 
           <div className="overflow-hidden">
@@ -82,7 +82,7 @@ export default function Intro() {
 
           <div className="flex items-end justify-between">
             <span className="font-mono text-[11px] uppercase tracking-mono text-bone/50">
-              Loading portfolio
+              Loading story
             </span>
             <span className="font-display text-5xl font-bold tabular-nums md:text-7xl">
               {String(count).padStart(3, "0")}

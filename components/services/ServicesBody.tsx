@@ -4,10 +4,10 @@ import { services } from "@/lib/content";
 import Reveal from "@/components/ui/Reveal";
 
 const process = [
-  { no: "01", title: "Discover", body: "We align on goals, users and scope. I ask the hard questions early." },
-  { no: "02", title: "Design", body: "Architecture and interface decisions, prototyped and pressure-tested." },
-  { no: "03", title: "Build", body: "Clean, typed, well-tested code shipped in tight, visible iterations." },
-  { no: "04", title: "Launch", body: "Deploy, measure, refine — and set you up to keep moving fast." },
+  { no: "01", title: "Explore", body: "Pick a real problem, define the scope, and choose a small, shippable slice." },
+  { no: "02", title: "Prototype", body: "Build the smallest version that proves the idea and teaches something." },
+  { no: "03", title: "Ship", body: "Deploy, measure, and document what worked and what didn&apos;t." },
+  { no: "04", title: "Iterate", body: "Refine the product, deepen the tech, and stack another skill." },
 ];
 
 export default function ServicesBody() {
@@ -40,9 +40,9 @@ export default function ServicesBody() {
 
       <section className="bg-bone-2 dark:bg-night-2 py-24 md:py-32">
         <div className="container-x">
-          <span className="eyebrow">/ How we&apos;ll work</span>
+          <span className="eyebrow">/ How I build</span>
           <h2 className="mt-6 max-w-2xl font-display text-[clamp(1.9rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tight">
-            A calm, transparent process — from first call to live product.
+            A steady loop of learning, shipping, and improving.
           </h2>
           <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (

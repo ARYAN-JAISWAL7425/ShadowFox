@@ -6,7 +6,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Let's build something great. Get in touch about a project, a role, or a collaboration.",
+    "Reach out with feedback, collaboration ideas, or internship opportunities.",
 };
 
 export default function ContactPage() {
@@ -16,7 +16,7 @@ export default function ContactPage() {
         index="06 / 06"
         eyebrow="Contact"
         titleLines={["Say", "Hello"]}
-        description="The fastest way to start is a short message about what you're building. I reply to everything."
+        description="Drop a note with feedback, ideas, or opportunities — I read everything."
       />
 
       <section className="bg-bone dark:bg-night pb-16">

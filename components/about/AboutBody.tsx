@@ -31,32 +31,30 @@ export default function AboutBody() {
           <div>
             <h2 className="font-display text-[clamp(1.7rem,3.6vw,3rem)] font-bold leading-[1.1] tracking-tight">
               <SplitWords
-                text="I'm Aryan — a full-stack developer who treats engineering as a craft, not a checklist."
-                highlight={["craft,"]}
+                text="I'm Aryan — a VIT Bhopal AIML student building my path into full-stack and GenAI engineering."
+                highlight={["full-stack", "GenAI"]}
               />
             </h2>
             <div className="mt-8 space-y-5 text-pretty leading-relaxed text-muted dark:text-bone/55">
               <Reveal delay={0.05}>
                 <p>
-                  Over the past six years I&apos;ve worked across the entire stack — designing
-                  interfaces, architecting backends and shipping products that real people and
-                  businesses depend on every day. I care equally about how something works and
-                  how it feels.
+                  This site is my digital home. It holds the work I&apos;m proud of, the projects
+                  I&apos;m building right now, and the experiments that are pushing me toward AI
+                  engineering.
                 </p>
               </Reveal>
               <Reveal delay={0.1}>
                 <p>
-                  I&apos;ve helped founders go from a Figma file to a launched MVP, scaled SaaS
-                  platforms for growing teams, and rebuilt sluggish apps into fast, accessible
-                  experiences. My happy place is the intersection of solid engineering and
-                  considered design.
+                  I&apos;m passionate about products that blend solid software engineering with
+                  applied AI — SaaS workflows, AI agents, LLM apps, RAG systems, and automation
+                  that saves people time.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
                 <p>
-                  When I&apos;m not building, I&apos;m studying motion design, contributing to open
-                  source, and obsessing over the small details that make great products feel
-                  effortless. Based in {site.location}, working with teams worldwide.
+                  I learn by shipping, writing, and sharing. Based in {site.location}, I&apos;m
+                  open to internships, collaborations, and builder communities that care about
+                  craft.
                 </p>
               </Reveal>
             </div>

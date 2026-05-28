@@ -139,17 +139,17 @@ export default function Hero() {
               data-cursor="view"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-colors hover:bg-vermillion dark:bg-bone dark:text-ink dark:hover:bg-vermillion dark:hover:text-bone"
             >
-              View selected work
+              See my projects
               <span aria-hidden>→</span>
             </Link>
           </Magnetic>
           <Magnetic strength={0.4}>
             <Link
-              href="/contact"
-              data-cursor="hi"
+              href="/about"
+              data-cursor="story"
               className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3.5 text-sm font-medium transition-colors hover:border-ink dark:border-bone/25 dark:hover:border-bone"
             >
-              Start a project
+              Read my story
             </Link>
           </Magnetic>
         </motion.div>

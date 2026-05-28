@@ -39,7 +39,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           from_name: "Aryan Jaiswal — Portfolio",
-          subject: `New project enquiry from ${form.name}`,
+          subject: `New message from ${form.name}`,
           name: form.name,
           email: form.email,
           message: form.message,
@@ -134,13 +134,13 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="eyebrow text-bone/40">
-          About the project
+          Your message
         </label>
         <textarea
           id="message"
           rows={4}
           className={`${field} resize-none`}
-          placeholder="What are you building, and how can I help?"
+          placeholder="Say hello, share a project, or tell me what you're exploring."
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
         />

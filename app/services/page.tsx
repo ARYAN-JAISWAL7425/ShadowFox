@@ -4,9 +4,9 @@ import ServicesBody from "@/components/services/ServicesBody";
 import CTASection from "@/components/ui/CTASection";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Focus",
   description:
-    "Full-stack development, SaaS platforms, API design, performance optimisation, MVP development and technical consulting.",
+    "Focus areas: full-stack builds, GenAI experiments, RAG systems, automation, and modern web craft.",
 };
 
 export default function ServicesPage() {
@@ -14,9 +14,9 @@ export default function ServicesPage() {
     <>
       <PageHeader
         index="03 / 06"
-        eyebrow="Services"
-        titleLines={["What I", "Do"]}
-        description="From a single API to an entire product — here's how I can help you build and ship."
+        eyebrow="Focus"
+        titleLines={["What I", "Explore"]}
+        description="The themes I'm leaning into right now — and the systems I keep building."
       />
       <ServicesBody />
       <CTASection />

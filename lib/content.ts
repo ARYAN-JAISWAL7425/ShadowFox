@@ -8,16 +8,16 @@ export const site = {
   name: "Aryan Jaiswal",
   firstName: "Aryan",
   lastName: "Jaiswal",
-  role: "Full-Stack Web Developer",
+  role: "GenAI & Full-Stack Developer",
   // Used for SEO / metadata base. Change to your real domain on deploy.
   url: "https://aryanjaiswal.dev",
   email: "aryanofficial7425@gmail.com",
-  location: "Mumbai, India",
-  availability: "Available for select projects — 2026",
+  location: "Bhopal, India",
+  availability: "VIT Bhopal B.Tech AIML student — open to internships and collaborations (2026)",
   tagline:
-    "I design and build fast, considered web products — from first idea to production deploy.",
+    "My digital home: a living log of my story, my builds, and my path into full-stack + AI engineering.",
   intro:
-    "Full-stack developer focused on React, Next.js and TypeScript. I help startups and teams turn ambitious ideas into polished, performant products that ship.",
+    "B.Tech AIML student at VIT Bhopal learning full-stack and GenAI engineering. I build small products, prototype AI systems, and document the journey end to end.",
 };
 
 /**
@@ -54,37 +54,37 @@ export const socials = [
 export const nav = [
   { label: "Work", href: "/work", index: "01" },
   { label: "About", href: "/about", index: "02" },
-  { label: "Services", href: "/services", index: "03" },
+  { label: "Focus", href: "/services", index: "03" },
   { label: "Skills", href: "/skills", index: "04" },
   { label: "Experience", href: "/experience", index: "05" },
   { label: "Contact", href: "/contact", index: "06" },
 ];
 
 export const stats = [
-  { value: 6, suffix: "+", label: "Years building for the web" },
-  { value: 48, suffix: "+", label: "Products shipped to production" },
-  { value: 35, suffix: "+", label: "Clients & teams partnered with" },
-  { value: 4.9, suffix: "/5", label: "Average client rating", decimals: 1 },
+  { value: 15, suffix: "+", label: "Projects built" },
+  { value: 2, suffix: "+", label: "Years learning full-stack" },
+  { value: 6, suffix: "+", label: "AI prototypes shipped" },
+  { value: 3, suffix: "+", label: "Hackathons joined" },
 ];
 
 export const capabilities = [
   {
     no: "01",
-    title: "Product Engineering",
-    body: "End-to-end web apps in React, Next.js & TypeScript — architected to scale and built to last.",
+    title: "Full-Stack Foundations",
+    body: "Building modern web apps from UI to API — shipping clean, fast experiences with solid architecture.",
     tags: ["Next.js", "React", "TypeScript"],
   },
   {
     no: "02",
-    title: "Backend & APIs",
-    body: "Robust services, auth, and data layers with Node.js, PostgreSQL and clean, typed API contracts.",
-    tags: ["Node.js", "PostgreSQL", "REST / GraphQL"],
+    title: "GenAI Engineering Path",
+    body: "Exploring AI agents, LLM apps, and RAG systems with an emphasis on practical product use cases.",
+    tags: ["LLM Apps", "AI Agents", "RAG"],
   },
   {
     no: "03",
-    title: "Interface & Motion",
-    body: "Distinctive, accessible interfaces with considered motion design that elevates the experience.",
-    tags: ["UI/UX", "Framer Motion", "Design Systems"],
+    title: "Product Craft",
+    body: "Design, storytelling, and shipping discipline — so the work feels intentional and memorable.",
+    tags: ["UI/UX", "Motion", "Product Story"],
   },
 ];
 
@@ -159,43 +159,43 @@ export const projects: Project[] = [
 export const services = [
   {
     no: "01",
-    title: "Full-Stack Development",
-    body: "Complete web products built end-to-end — frontend, backend, database and deployment.",
+    title: "Full-Stack Builds",
+    body: "React, Next.js, APIs, databases, and deployment — the full loop from idea to shipped app.",
   },
   {
     no: "02",
-    title: "SaaS Development",
-    body: "Multi-tenant platforms with auth, billing, dashboards and the architecture to scale.",
+    title: "SaaS Thinking",
+    body: "Exploring SaaS patterns: auth, billing, dashboards, and the foundations for scalable products.",
   },
   {
     no: "03",
-    title: "Web Application Development",
-    body: "Complex, interactive applications with real-time data and refined, accessible interfaces.",
+    title: "GenAI Experiments",
+    body: "AI agents, LLM apps, and workflow automation prototypes with real product intent.",
   },
   {
     no: "04",
-    title: "API Development",
-    body: "Typed, documented and secure REST & GraphQL APIs that your team will love to build on.",
+    title: "RAG & Retrieval",
+    body: "Chunking, embeddings, vector search, and retrieval patterns for useful AI experiences.",
   },
   {
     no: "05",
-    title: "Database Design",
-    body: "Schema design, modelling and optimisation across PostgreSQL, MongoDB and Redis.",
+    title: "Automation & Agents",
+    body: "Building small systems that remove friction — scripts, bots, and reliable workflows.",
   },
   {
     no: "06",
-    title: "Performance Optimization",
-    body: "Audits and engineering work that make existing products measurably faster and lighter.",
+    title: "Modern Web Craft",
+    body: "Motion, performance, and accessibility — the details that make experiences feel premium.",
   },
   {
     no: "07",
-    title: "Startup MVP Development",
-    body: "Idea to launched MVP, fast — pragmatic engineering that gets you to market and learning.",
+    title: "Product Mindset",
+    body: "Turning messy ideas into clear scopes, usable flows, and steady iterations.",
   },
   {
     no: "08",
-    title: "Technical Consulting",
-    body: "Architecture reviews, stack decisions and hands-on guidance for product and engineering teams.",
+    title: "Open Source + Learning",
+    body: "Sharing what I learn, documenting in public, and contributing where I can.",
   },
 ];
 
@@ -211,6 +211,10 @@ export const skillGroups = [
   {
     title: "Database",
     items: ["PostgreSQL", "MongoDB", "Redis", "Prisma"],
+  },
+  {
+    title: "AI & GenAI",
+    items: ["Python", "LLM APIs", "RAG", "Vector Databases", "AI Agents"],
   },
   {
     title: "DevOps & Cloud",
@@ -232,59 +236,59 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
-    period: "2023 — Now",
-    role: "Senior Full-Stack Developer",
-    company: "Independent / Freelance",
+    period: "2024 — Now",
+    role: "B.Tech AIML Student",
+    company: "VIT Bhopal University",
     summary:
-      "Partnering with startups and product teams to design and ship SaaS platforms, dashboards and MVPs end-to-end.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "AWS"],
+      "Building a foundation in AI/ML while shipping full-stack projects and documenting the learning path in public.",
+    tags: ["AIML", "Full-Stack", "Projects"],
   },
   {
-    period: "2021 — 2023",
-    role: "Full-Stack Engineer",
-    company: "Northbeam Studio",
+    period: "2023 — 2024",
+    role: "Full-Stack Learning Sprint",
+    company: "Self-directed",
     summary:
-      "Built and scaled client web applications, led frontend architecture and mentored junior engineers.",
-    tags: ["React", "Node.js", "GraphQL"],
+      "Focused on React, Next.js, APIs, and databases — building small products to learn by shipping.",
+    tags: ["React", "Next.js", "APIs"],
   },
   {
-    period: "2019 — 2021",
-    role: "Frontend Developer",
-    company: "Pixelhaus",
+    period: "2022 — 2023",
+    role: "Programming Foundations",
+    company: "Curiosity-driven",
     summary:
-      "Crafted marketing sites and interactive web experiences with a strong focus on motion and performance.",
-    tags: ["JavaScript", "GSAP", "CMS"],
+      "Learned core programming concepts and built early web experiments and automation scripts.",
+    tags: ["JavaScript", "HTML/CSS", "Automation"],
   },
 ];
 
 export const certifications = [
-  { title: "AWS Certified Solutions Architect", issuer: "Amazon Web Services", year: "2024" },
-  { title: "Professional Scrum Developer", issuer: "Scrum.org", year: "2023" },
-  { title: "Meta Front-End Developer", issuer: "Meta / Coursera", year: "2022" },
+  { title: "B.Tech AIML (In progress)", issuer: "VIT Bhopal University", year: "Present" },
+  { title: "Full-Stack + GenAI Learning Path", issuer: "Self-directed", year: "Ongoing" },
+  { title: "Hackathons & Builder Events", issuer: "Community", year: "Ongoing" },
 ];
 
 export const achievements = [
-  "Shipped 48+ production web products across fintech, healthtech and B2B SaaS.",
-  "Cut average page load times by 60% on a flagship client platform.",
-  "Mentored 8 junior developers into confident, shipping engineers.",
-  "Open-source contributor — components, dev tooling and docs.",
+  "Built 15+ projects across full-stack and early-stage AI experiments.",
+  "Prototyped 6 GenAI ideas spanning agents, chat workflows, and RAG apps.",
+  "Active in hackathons and builder communities — learning by shipping.",
+  "Documenting the journey publicly to stay consistent and accountable.",
 ];
 
 export const values = [
   {
-    title: "Ship with intent",
-    body: "Every decision serves the product and the people using it — no busywork, no bloat.",
+    title: "Build in public",
+    body: "Learning sticks when it's shared — progress, mistakes, and insights included.",
   },
   {
-    title: "Craft is the detail",
-    body: "Performance, accessibility and motion aren't extras; they're what separates good from great.",
+    title: "Story over hype",
+    body: "I care about authentic progress more than inflated claims or empty buzzwords.",
   },
   {
-    title: "Clarity over cleverness",
-    body: "Readable code, honest communication and architecture the next developer will thank you for.",
+    title: "Craft the fundamentals",
+    body: "Strong basics in architecture, performance, and UX create the freedom to experiment.",
   },
   {
-    title: "Partner, not vendor",
-    body: "I care about your outcomes — I'll push back, propose, and own the result with you.",
+    title: "Stay curious",
+    body: "I follow the most interesting problems — SaaS, automation, agents, and applied AI.",
   },
 ];
