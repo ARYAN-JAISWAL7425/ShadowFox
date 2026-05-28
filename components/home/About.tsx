@@ -74,11 +74,7 @@ export default function About() {
             <Reveal key={s.label} delay={i * 0.08}>
               <div>
                 <div className="font-display text-[clamp(1.9rem,9.5vw,3rem)] font-extrabold tracking-tight md:text-[clamp(2.25rem,5.6vw,3.75rem)]">
-                  <CountUp
-                    value={s.value}
-                    suffix={s.suffix}
-                    decimals={s.decimals ?? 0}
-                  />
+                  <CountUp value={s.value} suffix={s.suffix} />
                 </div>
                 <p className="mt-3 max-w-[12rem] text-sm text-muted dark:text-bone/55">{s.label}</p>
               </div>

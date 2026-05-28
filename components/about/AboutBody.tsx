@@ -19,7 +19,7 @@ export default function AboutBody() {
                 {stats.slice(0, 2).map((s) => (
                   <div key={s.label}>
                     <div className="font-display text-4xl font-extrabold tracking-tight">
-                      <CountUp value={s.value} suffix={s.suffix} decimals={s.decimals ?? 0} />
+                      <CountUp value={s.value} suffix={s.suffix} />
                     </div>
                     <p className="mt-2 text-sm text-muted dark:text-bone/55">{s.label}</p>
                   </div>
