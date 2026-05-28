@@ -30,3 +30,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# local tooling logs
+.playwright-mcp/
